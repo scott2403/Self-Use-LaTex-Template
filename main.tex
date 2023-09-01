@@ -1,0 +1,910 @@
+\documentclass[11pt, a4paper, openany]{book}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathpple}
+\usepackage{upgreek}
+\usepackage{mathpazo}
+\usepackage{lipsum}
+\usepackage{cite}
+\usepackage[colorlinks,linkcolor=black]{hyperref}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{savesym}
+\usepackage{amsfonts}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancybox}
+% \usepackage{fontspec}
+\newcommand\hmmax{0} % default 3
+\newcommand\bmmax{0} % default 4
+\usepackage{stmaryrd}	\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}	% To avoid warnings
+\usepackage{fancyhdr}
+\usepackage{epigraph}
+\usepackage{caption}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{amsmath,amscd}
+\usepackage{geometry}
+\usepackage{nccrules}
+\usepackage{mathrsfs}
+\usepackage{lmodern}
+\usepackage{fourier}
+% \usepackage{cmbright}
+% \usepackage{PTSerif} %Paratype Serif Fonts
+% \geometry{right=2.5cm,left=2.5cm,top=2.5cm,bottom=2.5cm}
+\geometry{
+	paper=a4paper,
+	top=3cm,
+	inner=2.54cm,
+	outer=2.54cm,
+	bottom=3cm,
+	headheight=5ex,
+	headsep=5ex,
+}
+\pagestyle{fancy} \lhead{左页眉}\chead{中间页眉}\rhead{右页眉}
+\usepackage{amsmath,amscd}
+\usepackage{bm}
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning, shapes.geometric, patterns, graphs, decorations.pathmorphing}
+\usepackage{titlesec}
+
+\title{{\Huge{\textbf{Lecture Notes of Complex Analysis}}}\\——School of Science in NJUPT}
+\author{H.T. Guo}
+\date{\today}
+\linespread{1.5}
+
+\usepackage{nccrules}
+\usepackage{mathrsfs}
+
+\newcommand{\mycomm}[1]{{\color{pink} \sffamily $\clubsuit\clubsuit\clubsuit$\; {#1}}}	% Comments for the author himself
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+  {\end{proof}}
+  
+\newcounter{claimcounter}
+\newenvironment{Proof of claim}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Proof of claim]}
+  {\end{proof}}
+
+% Well-known algebraic structures: AMS blackboard bold fonts are preferred.
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\A}{\ensuremath{\mathbb{A}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+
+% Algebra
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\topwedge}{\ensuremath{\bigwedge^{\mathrm{max}}}}
+\newcommand{\Ind}{\operatorname{Ind}}
+
+% Arithmetic
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Weil}[1]{\ensuremath{\mathrm{W}_{#1}}}	% The Weil group
+\newcommand{\WD}[1]{\ensuremath{\mathrm{WD}_{#1}}}	% The Weil-Deligne group
+\newcommand{\Resprod}{\ensuremath{{\prod}'}}	% Restricted product
+
+% Analysis
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\Ccusp}{\ensuremath{C_c^{\mathrm{cusp}}}}	% Cuspidal functions
+\newcommand{\relg}[1]{\ensuremath{\underset{#1}{>}}}	% greater relative to...
+\newcommand{\relgeq}[1]{\ensuremath{\underset{#1}{\geq}}}	% greater or equal relative to...
+\newcommand{\relgg}[1]{\ensuremath{\underset{#1}{\gg}}}		% much greater relative to...
+
+% General things...
+\newcommand{\lrangle}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\mes}{\operatorname{mes}}
+
+% Categorical Terms (in my view)
+\newcommand{\identity}{\ensuremath{\mathrm{id}}}
+\newcommand{\prolim}{\ensuremath{\underleftarrow{\lim}}}
+\newcommand{\indlim}{\ensuremath{\underrightarrow{\lim}}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\iHom}{\ensuremath{\mathrm{R}\mathcal{H}{om}}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\rightiso}{\ensuremath{\stackrel{\sim}{\rightarrow}}}
+\newcommand{\leftiso}{\ensuremath{\stackrel{\sim}{\leftarrow}}}
+
+% Homological Algebra
+\newcommand{\Ker}{\operatorname{ker}}
+\newcommand{\Coker}{\operatorname{coker}}
+\newcommand{\Image}{\operatorname{im}}
+\newcommand{\Hm}{\operatorname{H}}
+\newcommand{\dotimes}[1]{\ensuremath{\underset{#1}{\otimes}}}
+\newcommand{\uotimes}[1]{\ensuremath{\overset{#1}{\otimes}}}
+\newcommand{\Lotimes}{\ensuremath{\overset{\mathsf{L}}{\otimes}}}
+
+% Geometry
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Gm}{\ensuremath{\mathbb{G}_\mathrm{m}}}
+\newcommand{\Ga}{\ensuremath{\mathbb{G}_\mathrm{a}}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\utimes}[1]{\ensuremath{\overset{#1}{\times}}}
+\newcommand{\dtimes}[1]{\ensuremath{\underset{#1}{\times}}}
+\newcommand{\Supp}{\operatorname{Supp}}
+
+% Groups
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\so}{\ensuremath{\mathfrak{so}}}
+\newcommand{\Spin}{\operatorname{Spin}}
+\newcommand{\gl}{\ensuremath{\mathfrak{gl}}}
+\newcommand{\spin}{\ensuremath{\mathfrak{spin}}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\GSp}{\operatorname{GSp}}
+\newcommand{\syp}{\ensuremath{\mathfrak{sp}}}
+\newcommand{\Mp}{\ensuremath{\widetilde{\mathrm{Sp}}}}
+\newcommand{\MMp}{\ensuremath{\overline{\mathrm{Sp}}}}
+\newcommand{\bmu}{\ensuremath{\bm\mu}}
+\newcommand{\Lgrp}[1]{\ensuremath{{}^{\mathrm{L}} #1}}	% The L-group
+
+% Metaplectic stuff
+\newcommand{\Endo}{\ensuremath{\mathcal{E}}}
+\newcommand{\orbI}{\ensuremath{\mathcal{I}}}
+\newcommand{\cusp}{\operatorname{cusp}}
+\newcommand{\elli}{\operatorname{ell}}
+\newcommand{\desc}{\operatorname{desc}}	% Descente de Harish-Chandra
+\newcommand{\asp}{\ensuremath{\dashrule[.7ex]{2 2 2 2}{.4}}} % Le symbole pour anti-spécifiques
+\newcommand{\rev}{\ensuremath{\mathbf{p}}} % Le symbole pour revêtements
+\newcommand{\Trans}{\ensuremath{\mathcal{T}}}	% Transfert géométrique
+\newcommand{\trans}{\ensuremath{\check{\mathcal{T}}}}	% Transfert de distributions
+
+\newcommand{\Prot}[2]{\begin{Property}{#1}{}#2\end{Property}}
+\newcommand{\ex}[2]{\begin{Exercise}{#1}{}#2\end{Exercise}}
+
+\makeindex
+% ============================ Definition ================================
+\usepackage[theorems]{tcolorbox}
+\usepackage{amsmath}
+
+\newtcbtheorem[number within=section]%
+{Definition} % \begin..
+{Definition} % Title
+{} % Style - default
+{def} % label prefix; cite as ``theo:yourlabel''
+% \usepackage[theorems]{tcolorbox}
+% \usepackage{amsmath}
+
+% % 定义自定义的颜色风格
+% \tcbset{
+%     mydefinitionstyle/.style={
+%         colback=white!10,    % 背景颜色为灰色
+%         colframe=gray!25,   % 边框颜色为灰色
+%         fonttitle=\bfseries\color{black} % 标题字体样式为黑色 % 标题字体样式
+%     }
+% }
+% \newtcbtheorem[number within=section]%
+% {Definition} % \begin..
+% {Definition} % Title
+% {mydefinitionstyle} % 使用自定义的样式
+% {def} % label prefix; cite as ``theo:yourlabel''
+
+% ============================== Remark ===============================
+\usepackage{amsthm}
+\theoremstyle{remark}
+\newtheorem{remark}[]{\bfseries Remark}          % <- This will work
+
+% ============================ Theorem ================================
+% \usepackage{mdframed}
+% \usepackage{tikz}
+% \usepackage{etoolbox}
+
+% \newcounter{theo}[section]
+% \newenvironment{theo}[1][]{
+%     \stepcounter{theo}%
+%     \ifstrempty{#1}%
+%     {
+%         \mdfsetup{
+%             frametitle={
+%                 \tikz[baseline=(currentboundingbox.east),outersep=0pt]
+%                 \node[anchor=east,rectangle,fill=gray!20]
+%                 {\strut Theorem~\thetheo};
+%             }
+%         }
+%     }%
+%     {
+%         \mdfsetup{
+%             frametitle={
+%                 \tikz[baseline=(currentboundingbox.east),outersep=0pt]
+%                 \node[anchor=east,rectangle,fill=gray!20]
+%                 {\strut Theorem~\thetheo:~#1};
+%             }
+%         }%
+%     }%
+%     \mdfsetup{
+%         innertopmargin=10pt,
+%         linecolor=gray!20,
+%         linewidth=2pt,
+%         topline=true,
+%         frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+%     }
+%     \begin{mdframed}[]\relax
+% }{
+%     \end{mdframed}
+% }
+% 导入所需的宏包
+\usepackage{mdframed}  % 用于创建带框的环境
+\usepackage{tikz}      % 用于绘制图形
+\usepackage{etoolbox}  % 用于处理工具箱
+
+% 定义一个新的计数器“theo”，并将其与“section”和“subsection”进行关联
+\newcounter{theo}[subsection]
+\renewcommand{\thetheo}{\thesubsection.\arabic{theo}}  % 定义定理编号格式
+
+% 定义一个名为“theo”的新环境，可接受一个可选参数
+\newenvironment{theo}[1][]{
+    \stepcounter{theo}%  % 计数器加一，用于标识定理编号
+
+    % 检查是否提供了可选参数#1
+    \ifstrempty{#1}
+    {
+        % 如果没有提供参数，设置带框环境的样式
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline=(currentboundingbox.east),outersep=0pt]
+                \node[anchor=east,rectangle,fill=gray!25]
+                {\strut Theorem~\thetheo};
+            }
+        }
+    }
+    {
+        % 如果提供了参数，设置带框环境的样式（带参数的定理名称）
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline=(currentboundingbox.east),outersep=0pt]
+                \node[anchor=east,rectangle,fill=gray!25]
+                {\strut Theorem~\thetheo:~#1};
+            }
+        }%
+    }%
+
+    % 设置带框环境的样式（边距、颜色、线宽等）
+    \mdfsetup{
+        innertopmargin=10pt,
+        linecolor=gray!25,
+        linewidth=2pt,
+        topline=true,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+    }
+
+    % 开始带框环境
+    \begin{mdframed}[]\relax
+}{
+    % 结束带框环境
+    \end{mdframed}
+}
+
+% ==================================== Lemma =================================
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{etoolbox}
+
+\newcounter{lemma}[section]
+\newenvironment{lemma}[1][]{
+    \stepcounter{lemma}%
+    \ifstrempty{#1}%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Lemma~\thelemma};
+            }
+        }
+    }%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Lemma~\thelemma:~#1};
+            }
+        }%
+    }%
+    \mdfsetup{
+        innertopmargin=10pt,
+        linecolor=gray!20,
+        linewidth=2pt,
+        topline=true,
+        frametitleaboveskip=-\ht\strutbox, % 调整此处的值
+    }
+    \begin{mdframed}[]\relax
+}{
+    \end{mdframed}
+}
+% ==================================== Corollary =======================================
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{etoolbox}
+
+\newcounter{corollary}[section]
+\newenvironment{corollary}[1][]{
+    \stepcounter{corollary}%
+    \ifstrempty{#1}%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Corollary~\thecorollary};
+            }
+        }
+    }%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Corollary~\thecorollary:~#1};
+            }
+        }%
+    }%
+    \mdfsetup{
+        innertopmargin=10pt,
+        linecolor=gray!20,
+        linewidth=2pt,
+        topline=true,
+        frametitleaboveskip=-\ht\strutbox,
+    }
+    \begin{mdframed}[]\relax
+}{
+    \end{mdframed}
+}
+% ==================================== Example ====================================
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{etoolbox}
+
+\newcounter{example}[section]
+\newenvironment{example}[1][]{
+    \stepcounter{example}%
+    \ifstrempty{#1}%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Example~\theexample};
+            }
+        }
+    }%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Example~\theexample:~#1};
+            }
+        }%
+    }%
+    \mdfsetup{
+        innertopmargin=10pt,
+        linecolor=gray!20,
+        linewidth=2pt,
+        topline=true,
+        frametitleaboveskip=-\ht\strutbox, % Adjust this value if needed
+    }
+    \begin{mdframed}[]\relax
+}{
+    \end{mdframed}
+}
+% ================================== Propostion ====================================
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{etoolbox}
+
+\newcounter{proposition}[section]
+\newenvironment{proposition}[1][]{
+    \stepcounter{proposition}%
+    \ifstrempty{#1}%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Proposition~\theproposition};
+            }
+        }
+    }%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Proposition~\theproposition:~#1};
+            }
+        }%
+    }%
+    \mdfsetup{
+        innertopmargin=10pt,
+        linecolor=gray!20,
+        linewidth=2pt,
+        topline=true,
+        frametitleaboveskip=-\ht\strutbox,
+    }
+    \begin{mdframed}[]\relax
+}{
+    \end{mdframed}
+}
+% ======================================= Hint ===========================================
+\theoremstyle{remark}
+\newtheorem*{hint}{\bfseries Hint}
+% ======================================= Property ==========================================
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{Property}{Property}
+{%
+	enhanced,
+	breakable,
+	colback = mytheorembg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mytheoremfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle=black,
+	fonttitle = \bfseries,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mytheoremfr},
+}
+{th}
+
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=chapter]{property}{Property}
+{%
+	enhanced,
+	breakable,
+	colback = mytheorembg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mytheoremfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mytheoremfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mytheoremfr},
+}
+{th}
+
+
+\tcbuselibrary{theorems,skins,hooks}
+\newtcolorbox{Theoremcon}
+{%
+	enhanced
+	,breakable
+	,colback = mytheorembg
+	,frame hidden
+	,boxrule = 0sp
+	,borderline west = {2pt}{0pt}{mytheoremfr}
+	,sharp corners
+	,description font = \mdseries
+	,separator sign none
+}
+% ===================================== Exercise ==============================================
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{Exercise}{Exercise}
+{%
+	enhanced,
+	breakable,
+	colback = myexercisebg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{myexercisefg},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = black,
+	fonttitle = \bfseries,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, myexercisefg},
+}
+{th}
+
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=chapter]{exercise}{Exercise}
+{%
+	enhanced,
+	breakable,
+	colback = myexercisebg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{myexercisefg},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = myexercisefg,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, myexercisefg},
+}
+{th}
+% ======================================= Claim ===========================================
+% \theoremstyle{remark}
+% \newtheorem{claim}{\bfseries Claim}
+\theoremstyle{remark}
+\newtheorem{claim}{\bfseries Claim}
+\newtheorem{newclaim}{\bfseries Claim}[section] % 新的定理环境
+
+% ====================================== Axiom ============================================
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{etoolbox}
+
+\newcounter{axiom}[section]
+\newenvironment{axiom}[1][]{
+    \stepcounter{axiom}%
+    \ifstrempty{#1}%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Axiom~\theaxiom};
+            }
+        }
+    }%
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline={([yshift=-0.5ex]currentboundingbox.center)},outersep=0pt]
+                \node[anchor=center,rectangle,fill=gray!20]
+                {\strut Axiom~\theaxiom:~#1};
+            }
+        }%
+    }%
+    \mdfsetup{
+        innertopmargin=10pt,
+        linecolor=gray!20,
+        linewidth=2pt,
+        topline=true,
+        frametitleaboveskip=-\ht\strutbox, % adjust this value
+    }
+    \begin{mdframed}[]\relax
+}{
+    \end{mdframed}
+}
+% =================================== Notes ===============================================
+\usepackage{amsthm}
+\theoremstyle{remark}
+\newtheorem*{note}{\bfseries Note}          % <- This will work
+
+%==================================start main Text =======================================
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\begin{center}
+    \Huge\textbf{Reading List}
+\end{center}~\
+
+This is the Refernces and Textbooks.
+\begin{itemize}
+	\item \textbf{Complex Analysis} by \textit{Lars V. Ahlfors}
+	\item \textbf{Concise Complex Analysis} by \textit{Sheng Gong}
+        \item \textbf{Real And Complex Analysis} by \textit{W.Ruding}
+        \item \textbf{Complex Analysis} by \textit{Kunihiko Kodaira}
+        \item \textbf{Visual Complex Analysis} by \textit{Needham T.}
+        
+\end{itemize}
+~\\
+\begin{flushright}
+    \begin{tabular}{c}
+        \\
+        \today
+    \end{tabular}
+\end{flushright}
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\tableofcontents
+
+\chapter{Complex numbers}
+
+Here
+
+\section{Section}
+\begin{Definition}{The title}{mylabel}
+	\index{Dgeom@$D_{\mathrm{geom}, -}$, $D_{\mathrm{unip}, -}$}
+	Let $\mathcal{O}$ be a finite union of semisimple conjugacy classes in $M(F)$. Define
+	\begin{align*}
+		D_{\mathrm{geom},-}(\tilde{M}, \mathcal{O}) & := \left\{ D \in D_-(\tilde{M}) : \tilde{\gamma} \in \Supp(D) \implies \gamma_{\text{ss}} \in \mathcal{O} \right\}, \\
+		D_{\mathrm{geom}, -}(\tilde{M}) & := \bigoplus_{\substack{\mathcal{O} \subset M(F) \\ \text{ss.\ conj.\ class} }} D_{\mathrm{geom},-}(\tilde{M}, \mathcal{O}) \; \subset D_-(\tilde{M}), \\
+		D_{\mathrm{unip}, -}(\tilde{M}) & := D_{\mathrm{geom}, -}(\tilde{M}, \{1\}).
+	\end{align*}
+\end{Definition}
+Counting remarks with respect to the section:
+\begin{remark}
+Counter is okay
+\end{remark}
+
+Counting remarks with respect to the theorem:
+\begin{remark}
+\textbf{Problem:} counter is missing and there is
+not even a break line.
+\end{remark}
+\begin{axiom}[Axiom of choice]
+    For any set $X$ of nonempty \mathbf{Sets}, there exists a choice function $f$ that is defined on $X$ and maps each set of $X$ to an element of that set.
+\end{axiom}
+\begin{note}
+    
+\end{note}
+
+
+\begin{theo}[Inhomogeneous Linear]
+Let \(f\) be a function whose derivative exists in every point, then \(f\) is a continuous function.
+\end{theo}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{proof}
+To prove it by contradiction try and assume that the statement is false, proceed from there and at some point you will arrive to a contradiction.
+\end{proof}
+
+\begin{theo}
+    \index{transfer}
+	\index{TGG@$\Trans_{\mathbf{G}^{"!}, \tilde{G}}$}
+	Given $\mathbf{G}^! \in \Endo(\tilde{G})$, there exists a linear map
+	\[\begin{tikzcd}[row sep=tiny]
+		\Trans = \Trans_{\mathbf{G}^!, \tilde{G}}: \orbI_{\asp}(\tilde{G}) \otimes \mes(G) \arrow[r] & S\orbI(G^!) \otimes \mes(G^!) \\
+		f \arrow[mapsto, r]& f^{G^!}
+	\end{tikzcd}\]
+	such that for all $\delta \in \Sigma_{G\text{-reg}}(G^!)$, we have
+	\[ \sum_{\delta \in \Gamma_{\mathrm{reg}}(G)} \Delta_{\mathbf{G}^!, \tilde{G}}(\delta, \tilde{\gamma}) f_{\tilde{G}}(\tilde{\gamma}) = f^{G^!}(\delta) \]
+	where $\tilde{\gamma} \in \rev^{-1}(\gamma)$ is arbitrary, with the aforementioned convention on Haar measures.
+	
+	When $F$ is Archimedean, $\Trans$ is continuous and it restricts to
+	\[ \orbI_{\asp}(\tilde{G}, \tilde{K}) \otimes \mes(G) \to S\orbI(G^!, K^!) \otimes \mes(G^!), \]
+	where $K \subset G(F)$ and $K^! \subset G^!(F)$ are maximal compact subgroups.
+\end{theo}
+
+\begin{proof}
+    This is \cite[Théorème 5.20]{Li11}. First, it reduces to the case $\mathbf{G}^! \in \Endo_{\elli}(\tilde{G})$. The continuity in the Archimedean case is addressed in \cite[\S 7.1]{Li19}, which is based on the works of Adams and Renard. The $\tilde{K} \times \tilde{K}$-finite transfer in the Archimedean case is \cite[Theorem 7.4.5]{Li19}.
+\end{proof}
+
+\begin{theo}
+    Fix $n \in \Z_{\geq 1}$. Let $W$ (resp.\ $V$) be a $2n$-dimensional symplectic $F$-vector space (resp.\ the quadratic $F$-vector space giving rise to the split $\SO(2n+1)$). There is a natural bijection $P \leftrightarrow P_{\SO}$ (resp.\ $M \leftrightarrow M_{\SO}$) between conjugacy classes of parabolic subgroups (resp.\ Levi subgroups) of $\Sp(W)$ and $\SO(V, q)$, such that if $M \simeq \prod_{i \in I} \GL(n_i) \times \Sp(W^\flat)$, then $M_{\SO} \simeq \prod_{i \in I} \GL(n_i) \times \SO(V^\flat, q^\flat)$, where $(n_i)_{i \in I} \in \Z_{\geq 1}^I$ satisfies
+	\[ \frac{1}{2} \dim W^\flat = n - \sum_{i \in I} n_i = \frac{1}{2} \left( \dim V^\flat - 1 \right) . \]
+	The groups $W(M)$ and $W(M_{\SO})$ are also identified under this bijection: as groups of outer automorphisms of $\prod_{i \in I} \GL(n_i)$, both are generated by the transpose-inverse of $\GL(n_i)$ for various $i \in I$, together with permutations of factors of the same size.
+
+	The maximal tori $T$ and $T_{\SO}$ are canonically isomorphic with respect to the given bases, compatibly with the identification of their Weyl groups $\mathfrak{S}_n \ltimes \{\pm 1\}^n$ .
+\end{theo}
+\begin{proof}
+    Exercise.
+\end{proof}
+
+\begin{lemma}
+For all $\phi \in T^{\Endo}(\tilde{G})$ and $f \in \orbI_{\asp}(\tilde{G}) \otimes \mes(G)$, we have
+\[ \Trans^{\Endo}(f)(\phi) = \sum_{\tau \in T_-(\tilde{G})/\mathbb{S}^1} \Delta(\phi, \tau) f_{\tilde{G}}(\tau) . \]
+\end{lemma}
+\begin{proof}
+	The non-Archimedean case is the main result of \cite{Li19}. Consider the case $F = \R$ next.
+	
+	Write $f_{\tilde{G}}(\pi) := \Theta_\pi(f_{\tilde{G}})$ for each $\pi \in \Pi_{\mathrm{temp}, -}(\tilde{G})$. The local character relation of \cite[Theorem 7.4.3]{Li19} yields a function $\Delta_{\mathrm{spec}}: T^{\Endo}(\tilde{G}) \times \Pi_{\mathrm{temp}, -}(\tilde{G}) \to \{\pm 1\}$ satisfying
+	\begin{equation}\label{eqn:local-character-relation-aux-0}
+		\Trans^{\Endo}(f)(\phi) = \sum_{\pi \in \Pi_{\mathrm{temp}, -}(\tilde{G})} \Delta_{\mathrm{spec}}(\phi, \pi) f_{\tilde{G}}(\pi)
+	\end{equation}
+	for all $\phi$ and $f \in \orbI_{\asp}(\tilde{G}) \otimes \mes(G)$, and $\Delta_{\mathrm{spec}}(\cdot, \pi)$ (resp.\ $\Delta_{\mathrm{spec}}(\phi, \cdot)$) has finite support for each $\pi$ (resp.\ for each $\phi$). These properties characterize $\Delta_{\mathrm{spec}}$.
+
+	Choose a representative in $T_-(\tilde{G})$ for every class in $T_-(\tilde{G})/\mathbb{S}^1$. By the theory of $R$-groups, $T_-(\tilde{G})/\mathbb{S}^1$ gives a basis of $D_{\mathrm{temp}, -}(\tilde{G}) \otimes \mes(G)^\vee$: specifically, we may write
+	\[ \Theta_\tau = \sum_\pi \mathrm{mult}(\tau : \pi) \Theta_\pi, \quad \Theta_\pi = \sum_\tau \mathrm{mult}(\pi : \tau) \Theta_\tau \]
+	for all $\tau \in T_-(\tilde{G})/\mathbb{S}^1$ with its representative and $\pi \in \Pi_{\mathrm{temp}, -}(\tilde{G})$, for uniquely determined coefficients $\mathrm{mult}(\cdots)$. Switching between bases, \eqref{eqn:local-character-relation-aux-0} uniquely determines
+	\[ \Delta^\circ: T^{\Endo}(\tilde{G}) \times T_-(\tilde{G}) \to \mathbb{S}^1 \]
+	such that
+	\begin{align*}
+		\Delta^\circ(\phi, z\tau) & = z\Delta^\circ(\phi, \tau), \quad z \in \mathbb{S}^1 , \\
+		\Trans^{\Endo}(f)(\phi) & = \sum_{\tau \in T_-(\tilde{G})/\mathbb{S}^1} \Delta^\circ(\phi, \tau) f_{\tilde{G}}(\tau)
+	\end{align*}
+	for all $f$. Specifically, $\Delta^\circ(\phi, \tau) = \sum_{\pi \in \Pi_{\mathrm{temp}, -}(\tilde{G})} \Delta_{\mathrm{spec}}(\phi, \pi) \mathrm{mult}(\pi : \tau)$ for all $\tau \in T_-(\tilde{G})/\mathbb{S}^1$.
+	
+	Our goal is thus to show
+	\begin{equation}\label{eqn:local-character-relation-aux-1}
+		\Delta^\circ(\phi, \tau) = \Delta(\phi, \tau), \quad (\phi, \tau) \in T^{\Endo}(\tilde{G}) \times T_-(\tilde{G}).
+	\end{equation}
+
+	The first step is to reduce to the elliptic setting. We say $\pi \in \Pi_{\mathrm{temp}, -}(\tilde{G})$ is \emph{elliptic} if $\Theta_\pi$ is not identically zero on $\Gamma_{\mathrm{reg, ell}}(\tilde{G})$. In \cite[Definition 7.4.1]{Li19} one defined a subset $\Pi_{2\uparrow, -}(\tilde{G})$ of $\Pi_{\mathrm{temp}, -}(\tilde{G})$. All $\pi \in \Pi_{2\uparrow, -}(\tilde{G})$ are elliptic. Indeed, by \cite[Remark 7.5.1]{Li19} $\pi$ is a non-degenerate limit of discrete series in the sense of Knapp--Zuckerman, and such representations are known to be elliptic; see \textit{loc.\ cit.} for the relevant references.
+	
+	By \cite[Proposition 5.4.4]{Li12b}, $T_{\elli, -}(\tilde{G})/\mathbb{S}^1$ gives a basis for the space spanned by the characters of all elliptic $\pi$.
+	
+	Let $\phi \in T^{\Endo}(\tilde{G})$. Take $M \in \mathcal{L}(M_0)$ and $\mathbf{M}^! \in \Endo_{\elli}(\tilde{M})$ such that $\phi$ comes from $\phi_{M^!} \in \Phi_{\mathrm{bdd}, 2}(M^!)$ up to $W^G(M)$. Denote the factors relative to $\tilde{M}$ as $\Delta^{\tilde{M}}$, etc. By \cite[Theorem 7.4.3]{Li19},
+	\[ \Delta_{\mathrm{spec}}(\phi, \pi) = \sum_{\pi_M \in \Pi_{2\uparrow, -}(\tilde{M})} \Delta^{\tilde{M}}_{\mathrm{spec}}(\phi_{M^!}, \pi_M) \mathrm{mult}(I_{\tilde{P}}(\pi_M) : \pi) \]
+	for all $\pi \in \Pi_{\mathrm{temp}, -}(\tilde{G})$, where $P \in \mathcal{P}(M)$ and $\mathrm{mult}(I_{\tilde{P}}(\pi_M) : \pi)$ denotes the multiplicity of $\pi$ in $I_{\tilde{P}}(\pi_M)$.
+
+	We claim that
+	\begin{equation}\label{eqn:local-character-relation-aux-2}
+		\Delta^\circ(\phi, \tau) = \sum_{\substack{\tau_M \in T_{\elli, -}(\tilde{M}) \\ \tau_M \mapsto \tau }} \Delta^{\tilde{M}, \circ}(\phi_{M^!}, \tau_M).
+	\end{equation}
+	Note that the sum is actually over an orbit $W^G(M) \tau_M$ if such a $\tau_M$ exists. We may assume $\tau$ is the representative of some element from $T_-(\tilde{G})/\mathbb{S}^1$; we also choose representatives in $T_-(\tilde{M})$ for $T_-(\tilde{M})/\mathbb{S}^1$ compatibly with induction. We have
+	\begin{multline*}
+		\Delta^\circ(\phi, \tau) = \sum_{\pi \in \Pi_{\mathrm{temp}, -}(\tilde{G})} \Delta_{\mathrm{spec}}(\phi, \pi) \mathrm{mult}(\pi : \tau) \\
+		= \sum_\pi \sum_{\pi_M \in \Pi_{2\uparrow, -}(\tilde{M})} \sum_{\tau_M \in T_{\elli, -}(\tilde{M})/\mathbb{S}^1} \\
+		\cdot \mathrm{mult}(\tau_M : \pi_{\tilde{M}}) \mathrm{mult}(I_{\tilde{P}}(\pi_{\tilde{M}}) : \pi ) \mathrm{mult}(\pi : \tau) \Delta^{\tilde{M}, \circ}(\phi_{M^!}, \tau_M).
+	\end{multline*}
+	Given $\tau_M$, the sum over $(\pi, \pi_M)$ of the triple products of $\mathrm{mult}(\cdots)$ is readily seen to be $1$ if $\tau_M \mapsto \tau$, otherwise it is zero. This proves \eqref{eqn:local-character-relation-aux-2}.
+	
+	Observe that \eqref{eqn:local-character-relation-aux-2} take the same form as the induction formula in Definition \ref{def:spectral-transfer-factor}. In order to prove \eqref{eqn:local-character-relation-aux-1}, we may assume $\phi \in T^{\Endo}_{\elli}(\tilde{G})$, in which case $\Delta^\circ(\phi, \tau) = 0$ unless $\tau \in T_{\elli, -}(\tilde{G})$, and ditto for $\Delta(\phi, \tau)$. It is thus legitimate to take $f \in \orbI_{\asp, \cusp}(\tilde{G}) \otimes \mes(G)$ in the characterization of $\Delta^\circ(\phi, \cdot)$. All in all, $\Delta^\circ(\phi, \cdot)$ and $\Delta(\phi, \cdot)$ have the same characterization, whence \eqref{eqn:local-character-relation-aux-1}.
+	
+	The case $F = \CC$ is even simpler because it reduces to the case of split maximal tori via parabolic induction: see \cite[\S 7.6]{Li19}.
+\end{proof}
+
+\begin{corollary}
+    Let $i^{G^![s]}_{M^!}(\epsilon[s])$ be as in  \eqref{eqn:iGM-jump}. We have
+	\[ i_{M^!}\left( \tilde{G}, G^![s] \right) i^{G^![s]}_{M^!}(\epsilon[s]) \cdot \left\|\check{\beta}\right\| =
+	\left( Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} : Z_{\underline{\tilde{M}}^\vee}^\circ \right)^{-1}
+	i_{\underline{M}^!}\left( \tilde{G}, G^![s] \right) \cdot \left\|\check{\alpha}\right\|. \]
+\end{corollary}
+\begin{proof}
+    Use \cite[Lemma 1.1]{Ar99} to obtain the natural surjection $Z_{\tilde{M}^\vee}^\circ / Z_{\tilde{G}^\vee}^\circ \twoheadrightarrow Z_{(M^!)^\vee} / Z_{G^![s]^\vee}$. Denote its kernel as $K_1$. One readily checks that $|K_1|^{-1} = i_{M^!}\left( \tilde{G}, G^![s] \right)$ as in \cite[p.230 (2)]{MW16-1}.
+
+	We contend that the image of $Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} / Z_{\tilde{G}^\vee}^\circ$ is contained in $Z_{(M^!)^\vee}^{\check{\beta}} / Z_{G^![s]^\vee}$. When $\alpha$ is short, $\check{\alpha}$ transports to $\check{\beta}$ under $T^! \simeq T$; in this case $Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} / Z_{\tilde{G}^\vee}^\circ$ is actually the preimage of $Z_{(M^!)^\vee}^{\check{\beta}} / Z_{G^![s]^\vee}$. When $\alpha$ is long, $\check{\alpha}$ transports to $\frac{1}{2} \check{\beta}$, and the containment is clear.
+
+	Set $K'_1 := K_1 \cap (Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} / Z_{\tilde{G}^\vee}^\circ)$; we have just seen that $K_1 = K'_1$ if $\alpha$ is short. From these and Lemma \ref{prop:alpha-Z-Mbar}, we obtain the following commutative diagram of abelian groups, with exact rows:
+	\[\begin{tikzcd}
+        & 1 \arrow[d] & 1 \arrow[d] & 1 \arrow[d] & & \\
+		1 \arrow[r] & K_3 \arrow[d] \arrow[r] & Z_{\underline{\tilde{M}}^\vee}^\circ / Z_{\tilde{G}^\vee}^\circ \arrow[d] \arrow[r] & Z_{(\underline{M}^!)^\vee} / Z_{G^![s]^\vee} \arrow[r] \arrow[d] & 1 \arrow[r] \arrow[d] & 1 \\
+		1 \arrow[r] & K'_1 \arrow[r] \arrow[d] & Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} / Z_{\tilde{G}^\vee}^\circ \arrow[r] \arrow[d] & Z_{(M^!)^\vee}^{\check{\beta}} / Z_{G^![s]^\vee} \arrow[r] \arrow[d] & C_1 \arrow[r] \arrow[d] & 1 \\
+		1 \arrow[r] & K_2 \arrow[r] \arrow[d] & Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} / Z_{\underline{\tilde{M}}^\vee}^\circ \arrow[r] \arrow[d] & Z_{(M^!)^\vee}^{\check{\beta}} / Z_{(\underline{M}^!)^\vee} \arrow[r] \arrow[d] & C_2 \arrow[r] & 1 \\
+        & 1 & 1 & 1 & &
+	\end{tikzcd}\]
+	where $K_2, K_3$ (resp.\ $C_1$, $C_2$) are defined to be the kernels (resp.\ cokernels); they are all finite. The second and the third columns are readily seen to be exact, hence so is the first column by the Snake Lemma.
+	
+	Next, observe that $|K_3|^{-1} = i_{\underline{M}^!}(\tilde{G}, G^![s])$ as in the case of $|K_1|^{-1}$. Hence
+	\begin{align*}
+		i_{M^!}(\tilde{G}, G^![s]) & = |K_1|^{-1} = |K'_1|^{-1} (K_1 : K'_1)^{-1} \\
+		& = |K_2|^{-1} |K_3|^{-1} (K_1 : K'_1)^{-1} \\
+		& = |K_2|^{-1} i_{\underline{M}^!}(\tilde{G}, G^![s]) (K_1 : K'_1)^{-1}.
+	\end{align*}
+	It remains to prove that
+	\begin{equation*}
+		|K_2| (K_1 : K'_1) = \left( Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} : Z_{\underline{\tilde{M}}^\vee}^\circ \right)  i^{G^![s]}_{M^!}(\epsilon[s]) \cdot \frac{\|\check{\beta}\|}{\|\check{\alpha}\|} .
+	\end{equation*}
+
+	Using the third row of the diagram and \eqref{eqn:iGM-jump}, we see $|K_2| = \left( Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} : Z_{\underline{\tilde{M}}^\vee}^\circ \right)  i^{G^![s]}_{M^!}(\epsilon[s]) |C_2|$, thus we are reduced to proving
+	\begin{equation*}
+		|C_2| (K_1 : K'_1) = \frac{\|\check{\beta}\|}{\|\check{\alpha}\|}.
+	\end{equation*}
+
+	When $\alpha$ is short, we have seen that $K_1 = K'_1$, $\|\check{\alpha}\| = \|\check{\beta}\|$ whilst $C_2 = \{1\}$ (upon replacing $\tilde{G}$ by $\underline{\tilde{M}}$). The required equality follows at once.
+	
+	Hereafter, suppose that $\alpha$ is long. Write $\tilde{G} = \prod_{i \in I} \GL(n_i) \times \Mp(2n)$. Without loss of generality, we may express $\alpha = 2\epsilon_i$ under the usual basis for $\Sp(2n)$. The index $i$ must fall under a $\GL$-factor of $M$ that embeds into $\Sp(2n)$. Moreover, $\check{\alpha} = \check{\epsilon}_i$ and $\check{\beta} = 2\check{\epsilon}_i$. It is clear that
+	\begin{gather*}
+		Z_{\tilde{M}^\vee}^\circ = Z_{(M^!)^\vee}^\circ , \quad Z_{\tilde{M}^\vee}^{\hat{\alpha}^*} = Z_{\underline{\tilde{M}}^\vee}^\circ = Z_{(\underline{M}^!)^\vee}^\circ, \\
+		(K_1 : K'_1 ) = \left( Z_{(M^!)^\vee}^\circ \cap Z_{G^![s]^\vee} : Z_{(\underline{M}^!)^\vee}^\circ \cap Z_{G^![s]^\vee} \right).
+	\end{gather*}
+	Thus it remains to verify in this case that
+	\begin{equation}\label{eqn:jump-m-aux}
+		\left( Z_{(M^!)^\vee}^{\check{\beta}} : Z_{(\underline{M}^!)^\vee} \right) \left( Z_{(M^!)^\vee}^\circ \cap Z_{G^![s]^\vee} : Z_{(\underline{M}^!)^\vee}^\circ \cap Z_{G^![s]^\vee} \right) = 2.
+	\end{equation}
+
+	Observe that \eqref{eqn:jump-m-aux} involves only the objects on the endoscopic side. We may write
+	\[ G^![s] = \prod_{i \in I} \GL(n_i) \times \SO(2n'+1) \times \SO(2n''+1), \quad n' + n'' = n. \]
+	The first step is to reduce to the case $I = \emptyset$ and $n'' = 0$. Indeed, $M^!$ and $\underline{M}^!$ decompose accordingly, and the construction of $\underline{M}^!$ takes place inside either $\SO(2n'+1)$ or $\SO(2n''+1)$, on which $\beta$ lives. Hence we may rename $G^![s]$ to $G^!$ and assume $G^! = \SO(2n+1)$.
+	
+	Accordingly, we can write $M^! = \prod_{j=1}^k \GL(m_j) \times \SO(2m+1)$ where $m \in \Z_{\geq 0}$, such that $\check{\beta}$ factors through the dual of $\GL(m_1)$, so that $\underline{M}^!$ is obtained by merging $\GL(m_1)$ with $\SO(2m'+1)$ to form a larger Levi subgroup of $G^!$.
+	\begin{itemize}
+		\item Suppose $m=0$, then the first index in \eqref{eqn:jump-m-aux} is $1$ since
+		\[ Z_{(M^!)^\vee}^{\check{\beta}} = \{\pm 1\} \times \prod_{j \geq 2} \CC^\times = Z_{(\underline{M}^!)^\vee}. \]
+		On the other hand, $Z_{(M^!)^\vee}^\circ \cap Z_{(G^!)^\vee} = Z_{(G^!)^\vee} = \{\pm 1\}$ and $Z_{(\underline{M}^!)^\vee}^\circ \cap Z_{(G^!)^\vee} = \{1\}$, so the second index is $2$. Hence \eqref{eqn:jump-m-aux} is verified.
+		\item Suppose $m \geq 1$, then
+		\[ Z_{(M^!)^\vee}^{\check{\beta}} = \{\pm 1\} \times \prod_{j \geq 2} \CC^\times \times \{\pm 1\} ,\]
+		whilst $Z_{(\underline{M}^!)^\vee}$ has only one $\{\pm 1\}$-factor diagonally embedded, so the first index is $2$. On the other hand,
+		\[ Z_{(M^!)^\vee}^\circ = \prod_{j \geq 1} \CC^\times \times \{1\} \]
+		intersects trivially with $Z_{(G^!)^\vee} \simeq \{\pm 1\}$, so the second index is $1$. Again, \eqref{eqn:jump-m-aux} is verified.
+	\end{itemize}
+
+	Summing up, the case of long roots is completed.
+\end{proof}
+
+\begin{Definition}
+    \index{TransEndo@$\Trans^{\Endo}$, $\trans^{\Endo}$}
+	In view of Proposition \ref{prop:Levi-central-twist}, we may define the \emph{collective geometric transfer} $\Trans^{\Endo}$ as
+	\begin{equation*}\begin{tikzcd}[row sep=tiny]
+		\orbI_{\asp}(\tilde{G}) \otimes \mes(G) \arrow[r, "{\Trans^{\Endo}}" inner sep=0.8em] & \orbI^{\Endo}(\tilde{G}) \\
+		\orbI_{\asp, \cusp}(\tilde{G}) \otimes \mes(G) \arrow[phantom, u, "\subset" description, sloped] \arrow[r, "{\Trans^{\Endo}_{\cusp}}"'] & \orbI^{\Endo}_{\cusp}(\tilde{G}) \arrow[phantom, u, "\subset" description, sloped]
+	\end{tikzcd}\end{equation*}
+	mapping $f$ to $\left( \Trans_{\mathbf{G}^!, \tilde{G}}(f)\right)_{\mathbf{G}^! \in \Endo_{\elli}(\tilde{G})}$. When $F$ is Archimedean, it is continuous and restricts to
+	\[ \Trans_{\mathbf{G}^!, \tilde{G}}: \orbI_{\asp}(\tilde{G}, \tilde{K}) \otimes \mes(G) \to \orbI^{\Endo}(\tilde{G}, \tilde{K}); \]
+	ditto for the case with subscripts ``$\cusp$'' (see Theorem \ref{prop:geom-transfer}).
+
+	Taking transpose yields the collective transfer of distributions
+	\[ \trans^{\Endo}: \bigoplus_{\mathbf{G}^! \in \Endo_{\elli}(\tilde{G})} SD(G^!) \otimes \mes(G^!)^\vee \to D_-(\tilde{G}) \otimes \mes(G)^\vee . \]
+	These notions extend immediately to groups of metaplectic type.
+\end{Definition}
+
+\begin{example}
+This is an example.
+\end{example}
+\begin{hint}
+There is No solution.
+\end{hint}
+\begin{solution}
+    test.
+\end{solution}
+
+\begin{proposition}[Dirichlet BVP on the Upper Half Plane.]
+Suppose that $f: \mathbb{R} \rightarrow \mathbb{R}$ is continuous and both $\lim_{x \to -\infty} f(x) $ and $\lim_{x \to +\infty} f(x) $ exist and are finite. Then $u: \mathbb{H} \rightarrow \mathbb{R}$ define by the integral 
+\[ u(z) = \operatorname{Re}(\frac{1}{\pi i}) \int_{-\infty}^{+\infty} \frac{f(t)}{t-z}\mathrm{d}t, \] is the unique solution to the Dirichlet BVP:$$\nabla^{2}u=0 \quad in \quad \mathbb{H} \quad u=f \quad on \quad \partial \mathbb{H} $$
+\end{proposition}
+
+\begin{proof}
+    For any $z_0 \in \mathbb{H}$, consider the biholomorphism
+    $$
+    \psi(z)=\frac{z-z_0}{z-\bar{z}_0}
+    $$
+    which maps $\mathbb{H}$ onto $\mathbb{D},(-\infty,+\infty)$ onto $\partial \mathbb{D} \backslash\{1\}$, and $z_0$ to 0 . Then $\psi \circ f$ is continuous on $\partial \mathbb{D} \backslash\{1\}$ and bounded on $\partial \mathbb{D}$. By Theorem 4.79 and the remark after it, there exists a unique bounded harmonic function $v: \mathbb{D} \rightarrow \mathbb{R}$ such that $v=\psi \circ f$ on $\partial \mathbb{D} \backslash\{1\}$. Hence $u:=\psi^{-1} \circ v$ is the unique solution to the Dirichlet BVP on $\mathbb{H}$.
+    Now we turn to the computation of the explicit formula of the solution. By mean value property we have
+    $$
+    \nu(0)=\frac{1}{2 \pi} \int_0^{2 \pi} \nu\left(\mathrm{e}^{\mathrm{i} \theta}\right) \mathrm{d} \theta
+    $$
+    Since $\psi$ maps $(-\infty,+\infty)$ onto $\partial \mathbb{D} \backslash\{1\}$,
+    $$
+    \mathrm{e}^{\mathrm{i} \theta}=\frac{t-z_0}{t-\bar{z}_0} \Rightarrow \theta=-\mathrm{i} \log \left(\frac{t-z_0}{t-\bar{z}_0}\right)
+    $$
+    Take the differential:
+    $$
+    \mathrm{d} \theta=-\mathrm{i} \frac{t-\bar{z}_0}{t-z_0} \cdot\left(-\frac{\bar{z}_0-z_0}{\left(t-\bar{z}_0\right)^2}\right) \mathrm{d} t=\mathrm{i} \frac{\bar{z}_0-z_0}{\left(t-z_0\right)\left(t-\bar{z}_0\right)} \mathrm{d} t=\frac{2 \operatorname{Im} z_0}{t^2-2 t \operatorname{Re} z_0+\left|z_0\right|^2} \mathrm{~d} t=\operatorname{Re}\left(\frac{2}{\mathrm{i}\left(t-z_0\right)}\right) \mathrm{d} t
+    $$
+    Since $v(0)=u\left(z_0\right)$, we have
+    $$
+    u\left(z_0\right)=\frac{1}{2 \pi} \int_{-\infty}^{+\infty} f(t) \operatorname{Re}\left(\frac{2}{\mathrm{i}\left(t-z_0\right)}\right) \mathrm{d} t=\operatorname{Re}\left(\frac{1}{\pi \mathrm{i}} \int_{-\infty}^{+\infty} \frac{f(t)}{t-z} \mathrm{~d} t\right)
+    $$, Therefore the proposition is proved.
+
+\end{proof}
+
+\Prot{}{If $x\in$ open set $V$ then $\exists$ $\delta>0$ such that $B_{\delta}(x)\subset V$}
+\begin{claim}
+    THIS IS CLAIM.
+\end{claim}
+\ex{}{This is The Exercise of the Textbook}
+\begin{claim}
+the propostion is Trival.
+\end{claim}
+\begin{Proof of claim}
+    start.
+\end{Proof of claim}
+
+\chapter{Chapter}
+
+Here
+
+\section{Section}
+
+\begin{Definition}{The title}{mylabel}
+	\index{Dgeom@$D_{\mathrm{geom}, -}$, $D_{\mathrm{unip}, -}$}
+	Let $\mathcal{O}$ be a finite union of semisimple conjugacy classes in $M(F)$. Define
+	\begin{align*}
+		D_{\mathrm{geom},-}(\tilde{M}, \mathcal{O}) & := \left\{ D \in D_-(\tilde{M}) : \tilde{\gamma} \in \Supp(D) \implies \gamma_{\text{ss}} \in \mathcal{O} \right\}, \\
+		D_{\mathrm{geom}, -}(\tilde{M}) & := \bigoplus_{\substack{\mathcal{O} \subset M(F) \\ \text{ss.\ conj.\ class} }} D_{\mathrm{geom},-}(\tilde{M}, \mathcal{O}) \; \subset D_-(\tilde{M}), \\
+		D_{\mathrm{unip}, -}(\tilde{M}) & := D_{\mathrm{geom}, -}(\tilde{M}, \{1\}).
+	\end{align*}
+\end{Definition}
+
+\end{document}
+
+
+
